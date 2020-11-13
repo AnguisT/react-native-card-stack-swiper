@@ -435,6 +435,11 @@ class CardStack extends Component {
       outputRange: [secondCardZoom, secondCardZoom, 1],
       extrapolate: "clamp",
     });
+    const bottom = dragDistance.interpolate({
+      inputRange: [0, 10, 220],
+      outputRange: [-20, -10, 0],
+      extrapolate: "clamp",
+    });
     const rotate = drag.x.interpolate({
       inputRange: [width * -1.5, 0, width * 1.5],
       outputRange: this.props.outputRotationRange,
@@ -459,6 +464,7 @@ class CardStack extends Component {
                   elevation: topCard === "cardB" ? 3 : 2,
                 },
               }),
+              bottom: topCard === "cardB" ? 0 : bottom,
               transform: [
                 { rotate: topCard === "cardB" ? rotate : "0deg" },
                 { translateX: topCard === "cardB" ? drag.x : 0 },
@@ -482,6 +488,7 @@ class CardStack extends Component {
                   elevation: topCard === "cardA" ? 3 : 2,
                 },
               }),
+              bottom: topCard === "cardA" ? 0 : bottom,
               transform: [
                 { rotate: topCard === "cardA" ? rotate : "0deg" },
                 { translateX: topCard === "cardA" ? drag.x : 0 },
