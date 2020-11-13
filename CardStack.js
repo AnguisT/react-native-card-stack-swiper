@@ -437,7 +437,7 @@ class CardStack extends Component {
     });
     const bottom = dragDistance.interpolate({
       inputRange: [0, 10, 220],
-      outputRange: [-20, -10, 0],
+      outputRange: [-10, -5, 0],
       extrapolate: "clamp",
     });
     const rotate = drag.x.interpolate({
